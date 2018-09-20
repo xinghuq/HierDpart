@@ -1,4 +1,4 @@
-﻿\name{COR_Fstd}
+\name{COR_Fstd}
 \alias{COR_Fstd}
 \title{ Function to calculate pairwise Fst and correlation between Fst and geographic distance.
 }
@@ -18,9 +18,8 @@ COR_Fstd(x, d, ncode)
 \details{ This function returns lists of pairwise Fst matrix, and a matrix of theorical geographical distance if d is FALSE, as well as their correlation coefficient.
 }
 \value{
-\item {pwFst} { The pairwise genetic differentiation-Fst matrix}
-\item {Dgeo} { The pairwise geographical distance matrix}
-\item {COR_Fstd} {Person correlation coefficient of genetic differentiation (Fst) and geographic distance}
+  \item {pwFst}{ The pairwise genetic differentiation Fst matrix}
+  \item {COR_Fstd}{Person correlation coefficient of genetic differentiation (Fst) and geographic distance}
 }
 \references{
 Goudet, J. (2005). Hierfstat, a package for R to compute and test hierarchical F‐statistics. Molecular Ecology Notes, 5(1), 184-186.

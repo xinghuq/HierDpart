@@ -1,148 +1,23 @@
-﻿\name{HierdetaD}
+\name{HierdetaD}
 \alias{HierdetaD}
-
-\title{ Function to calculate hierarchial genetic diversity and differentiation (deta D)
-
-}
-\description{ This function calculates and decomposes hierarchial genetic diversity and differentiation (deta D) (Oscar,E et al, 2018) into α, β, γ diversity and deta D2 and deta D1 (genetic differentiation).
-
-}
-\usage{
-HierdetaD(x, nreg, r, ncode)
-}
-
+\title{ Function to calculate and decompose genetic diversity (D, q=1) and differentiation (deta D).}
+\description{ This function calculates and decomposes genetic diversity (Hill number q=1) and differentiation (deta D) (Oscar, E et al, 2018) into alpha, beta, gamma diversity, as well as deta D2 and deta D1 differentiation.}
+\usage{HierdetaD(x, nreg, r, ncode)}
 \arguments{
-  \item{x}{ The genetype data, genepop format
-
+  \item{x}{The genotypic data, genepop format}
+  \item{nreg}{Number of aggregate in the hierarchical structure.}
+  \item{r}{The number of subaggregate in the hierarchy.}
+  \item{ncode}{Coding type of genetic data.}
 }
-  \item{nreg}{ Number of aggregate in your hierarchical structure.
-
-}
-  \item{r}{ The number of subaggregate in your hierarchical structure.
-
-}
-  \item{ncode}{ Coding type of genetic data.
-
-}
-}
-\details{ This function calculates the hierarchial genetic differentiation (deta D) for metapopulations structured in any hierarchy. In this function, you can input your genepop file (x) and structure (nreg, r) of your data in the arguments, and then returns a list of your hierarchial genetic diversity and differentiation (deta D ). The result contains D_gamma, D_alpha.2, D_alpha.1, D_beta.2, D_beta.1, Differentiation.2, Differentiation.1, which corresponds to different hierarchial levels.
-
-}
+\details{ This function calculates the hierarchial genetic differentiation (deta D) for metapopulations structured in any hierarchy. In this function, you can input your genepop file (x) and structure (nreg, r) of your data in the arguments, and then returns a list of your hierarchial genetic diversity and differentiation (deta D ). The result contains D_gamma, D_alpha.2, D_alpha.1, D_beta.2, D_beta.1, Differentiation.2, Differentiation.1, which corresponds to different hierarchial levels.}
 \value{
-\item{Dst}{Result returns to a list of hierarchial diversities (q=1) and genetic differentiations, including D_gamma (total diversity), D_alpha.2 (average total diversity among aggregate (eg. region) within the whole ecosystem), D_alpha.1 (average diversity among populations), D_beta.2 (number of aggregate equivalent), D_beta.1 (number of population equivalent), Differentiation.2 (genetic differentiation between aggragates), Differentiation.1 (genetic differentiation between populations)}
-
+  \item{Dst}{Result returns to a list of hierarchial diversities (q=1) and genetic differentiations, including D_gamma (total diversity), D_alpha.2 (average total diversity between aggregates (eg. regions) within the ecosystem), D_alpha.1 (average diversity between subaggregates (eg.subpopulations)), D_beta.2 (number of aggregate equivalent), D_beta.1 (number of subaggregate equivalent), Differentiation.2 (genetic differentiation between aggragates), Differentiation.1 (genetic differentiation between subaggregates).}
 }
 \references{
-Gaggiotti, O. E., Chao, A., Peres‐Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
-
-}
-\author{ qinxinghu@gmail.com
-
-}
-\note{
-
-}
-
-
-
-\seealso{
-
-}
+Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.}
+\author{ qinxinghu@gmail.com}
+\note{}
+\seealso{HierAr; HierFst; HierHe}
 \examples{
-HeirD=HierdetaD("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x, nreg, r, ncode)
-{
-    require(diveRsity)
-    gp = ncode
-    file = readGenepop(x, gp, bootstrap = FALSE)
-    outfile = file$allele_freq
-    npops = file$npops
-    if (sum(r) != npops)
-        stop("number of pops should be identical with your defined in region")
-    Str = function(nreg, r, npops) {
-        str = data.frame(matrix(data = 0, ncol = npops, nrow = 3))
-        str[1, ] = c(rep("ecosystem", times = npops))
-        if (length(r) != nreg)
-            stop("number of regions should be equal to the number of  r  defined")
-        str[2, ] = c(rep(paste0("region", 1:nreg), r))
-        str[3, ] = c(paste("pop", 1:npops))
-        str = as.matrix(str)
-        return(str)
-    }
-    str = Str(nreg, r, npops)
-    Hier_detaD = function(abun, struc) {
-        n = sum(abun)
-        N = ncol(abun)
-        ga = rowSums(abun)
-        gp = ga[ga > 0]/n
-        G = sum(-gp * log(gp))
-        H = nrow(struc)
-        A = numeric(H - 1)
-        W = numeric(H - 1)
-        B = numeric(H - 1)
-        Diff = numeric(H - 1)
-        wi = colSums(abun)/n
-        W[H - 1] = -sum(wi[wi > 0] * log(wi[wi > 0]))
-        pi = sapply(1:N, function(k) abun[, k]/sum(abun[, k]))
-        Ai = sapply(1:N, function(k) -sum(pi[, k][pi[, k] > 0] *
-            log(pi[, k][pi[, k] > 0])))
-        A[H - 1] = sum(wi * Ai)
-        if (H > 2) {
-            for (i in 2:(H - 1)) {
-                I = unique(struc[i, ])
-                NN = length(I)
-                ai = matrix(0, ncol = NN, nrow = nrow(abun))
-                c
-                for (j in 1:NN) {
-                  II = which(struc[i, ] == I[j])
-                  if (length(II) == 1) {
-                    ai[, j] = abun[, II]
-                  }
-                  else {
-                    ai[, j] = rowSums(abun[, II])
-                  }
-                }
-                pi = sapply(1:NN, function(k) ai[, k]/sum(ai[,
-                  k]))
-                wi = colSums(ai)/sum(ai)
-                W[i - 1] = -sum(wi * log(wi))
-                Ai = sapply(1:NN, function(k) -sum(pi[, k][pi[,
-                  k] > 0] * log(pi[, k][pi[, k] > 0])))
-                A[i - 1] = sum(wi * Ai)
-            }
-        }
-        Diff[1] = (G - A[1])/W[1]
-        B[1] = exp(G)/exp(A[1])
-        if (H > 2) {
-            for (i in 2:(H - 1)) {
-                Diff[i] = (A[i - 1] - A[i])/(W[i] - W[i - 1])
-                B[i] = exp(A[i - 1])/exp(A[i])
-            }
-        }
-        Gamma = exp(G)
-        Alpha = exp(A)
-        Diff = Diff
-        out = matrix(c(Gamma, Alpha, B, Diff), ncol = 1)
-        rownames(out) <- c(paste0("D_gamma"), paste0("D_alpha.",
-            (H - 1):1), paste0("D_beta.", (H - 1):1), paste0("Differentiation.",
-            (H - 1):1))
-        return(out)
-    }
-    Dst = data.frame(matrix(data = 0, ncol = 7, nrow = file$nloci))
-    for (i in seq_along(outfile)) {
-        Dst[i, ] = t(Hier_detaD(outfile[[i]], str))
-    }
-    rownames(Dst) = c(paste("Locus", 1:file$nloci))
-    colnames(Dst) = c("D_gamma", "D_alpha.2", "D_alpha.1", "D_beta.2",
-        "D_beta.1", "Differentiation.2", "Differentiation.1")
-    return(Dst)
-  }
-}
-
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }
+HeirD=HierdetaD("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)}
+\keyword{HierdetaD}
