@@ -1,4 +1,3 @@
-
 ###### updated on 09-08-2018, the function for correlation of pirwise Fst and distance
 
 COR_Fstd = function (x, d, ncode) {
