@@ -1,4 +1,3 @@
-
 CorDdPlot = function(x, d, ncode) {
     data = COR_detaDd(x, d, ncode)
     require(ggplot2)
