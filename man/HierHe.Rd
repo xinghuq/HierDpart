@@ -1,59 +1,40 @@
-\name{HierHe}
+﻿\name{HierHe}
 \alias{HierHe}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Function to calculate hierarchial heterozygosity.
-%%  ~~function to do ... ~~
 }
 \description{ This function calculates and decomposes hierarchial heterozygosity into different levels. We can obtain heterozygoisty in any hierarchical structured populations set in the structure (nreg,r).
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 HierHe(x, nreg, r, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{ Genetic data, the format should be genepop file with proper extentions.
-%%     ~~Describe \code{x} here~~
 }
   \item{nreg}{ Number of aggregate in your hierarchical structure.
-%%     ~~Describe \code{nreg} here~~
 }
   \item{r}{ The number of subaggregate in your hierarchical structure.
-%%     ~~Describe \code{r} here~~
 }
   \item{ncode}{ Coding type of genetic data, whether 3, or 2.
-%%     ~~Describe \code{ncode} here~~
 }
 }
 \details{ In line with other genetic metrics, this function obatains hierarchial expected heterozygosity (He) for metapopulations. The result gives us hierarchial allelic diversity at different levels as you set in the input argument.
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 
 \item{HierHe_perloc}{List of hierarchial allelic diversity (heterozygosity) in different levels across loci}
 \item{HieHr_overall}{Overall hierarchial allelic diversity (heterozygosity) in different levels}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{ Goudet, J. (2005). Hierfstat, a package for R to compute and test hierarchical F‐statistics. Molecular Ecology Notes, 5(1), 184-186.
 Jombart, T. (2008). adegenet: a R package for the multivariate analysis of genetic markers. Bioinformatics, 24(11), 1403-1405.
 Nei, M. (1977). F‐statistics and analysis of gene diversity in subdivided populations. Annals of human genetics, 41(2), 225-233.
-%% ~put references to the literature/web site here ~
 }
 \author{qinxinghu@gmail.com
-%%  ~~who you are~~
 }
 \note{
-%%  ~~further notes~~
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 HeirHe=HierdetaD("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)
@@ -181,7 +162,5 @@ function (x, nreg, r, ncode)
     return(list(HierHe_perloc = Hallperloc, HieHr_overall = HieHr))
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ "HierHe" }
+

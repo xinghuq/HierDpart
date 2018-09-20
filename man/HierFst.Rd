@@ -1,57 +1,53 @@
 \name{HierFst}
 \alias{HierFst}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{ Function to calculate hierarchial genetic differentiation (Fst, Weir B.S., 1996;Yang R.C.,1998).
-%%  ~~function to do ... ~~
+
 }
 \description{The function calculate hierarchial genetic differentiation (Fst, Weir B.S., 1996; Yang R.C., 1998). The hierarchy you set in the input arguments (nreg, r) will automatically generate your hierarchical structure. Based on the parameters you set, the result returns to a F-statistics matrix displaying low level (rows) of Fst within a higher level hierarchy (columns).
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+
 }
 \usage{
 HierFst(x, nreg, r, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{ The name of the data file, or the string giving the path to the file. The file should be a genepop object, with with the appropriate extension.
-%%     ~~Describe \code{x} here~~
+
 }
   \item{nreg}{ The number of aggregates in your hierarchy.
-%%     ~~Describe \code{nreg} here~~
+
 }
   \item{r}{ A vector specifying number of populations or subpopulations in each aggregate.
-%%     ~~Describe \code{r} here~~
+
 }
   \item{ncode}{ an integer indicating the number of characters used to code an allele.
-%%     ~~Describe \code{ncode} here~~
+
 }
 }
 \details{ This function was modified and improved from the varcomp.glob function from the hierfstat package (Jerome Goudet & Thibaut Jombart 2015). It was optimized to easily set the hierarchial structure while varcom.glob requires the structure data should be already correctly formated in accordance with hierfstat data. In this function, you can input your genepop file (x) and structure (nreg, r) of your data in the arguments, and then returns a matrix of your hierarchial Fst.
-%%  ~~ If necessary, more details than the description above ~~
+
 }
 \value{ The result returns a matrix of hierarchical F-statistics type-coefficients at different levels.
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
 }
 \references{ Weir, B.S. (1996) Genetic Data Analysis II. Sinauer Associates.
 Yang, R.C. (1998). Estimating hierarchical F-statistics. Evolution 52(4):950-956
 Goudet J. (2005). Hierfstat, a package for R to compute and test variance components and Fstatistics.
 Molecular Ecology Notes. 5:184-186
-%% ~put references to the literature/web site here ~
+
 }
 \author{ qinxinghu@gmail.com
-%%  ~~who you are~~
+
 }
 \note{ Note that you should arrange your population in the order corresponding to your structure set in nreg.
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{ # load data
              data(Island.gen)
@@ -158,7 +154,6 @@ require(adegenet)
     return(HieFst)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ HierFst}% use one of  RShowDoc("KEYWORDS")
-\keyword{ Fst}% __ONLY ONE__ keyword per line
+
+\keyword{ HierFst}
+\keyword{ Fst}

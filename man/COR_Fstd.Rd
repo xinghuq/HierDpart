@@ -1,58 +1,45 @@
-\name{COR_Fstd}
+﻿\name{COR_Fstd}
 \alias{COR_Fstd}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Function to calculate pairwise Fst and correlation between Fst and geographic distance.
-%%  ~~function to do ... ~~
 }
 \description{ This function calculates pairwise genetic differentication (Fst) , as well as the correlation between genetic differentiation (Fst) and geographic distance.
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 COR_Fstd(x, d, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{  A genetic data files, here the format is genepop format.
-%%     ~~Describe \code{x} here~~
 }
   \item{d}{ Pairwise geographic distance for calculating correlations. If no actual geographic distance, d=FALSE. The geographic distance should be a matrix that corresponds to the pairwise genetic differentiation matrix.
-%%     ~~Describe \code{d} here~~
 }
   \item{ncode}{ The code type of the genotype
-%%     ~~Describe \code{ncode} here~~
 }
 }
 \details{ This function returns lists of pairwise Fst matrix, and a matrix of theorical geographical distance if d is FALSE, as well as their correlation coefficient.
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 \item {pwFst} { The pairwise genetic differentiation-Fst matrix}
 \item {Dgeo} { The pairwise geographical distance matrix}
 \item {COR_Fstd} {Person correlation coefficient of genetic differentiation (Fst) and geographic distance}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{
 Goudet, J. (2005). Hierfstat, a package for R to compute and test hierarchical F‐statistics. Molecular Ecology Notes, 5(1), 184-186.
 Jombart, T. (2008). adegenet: a R package for the multivariate analysis of genetic markers. Bioinformatics, 24(11), 1403-1405.
 Weir, B. S.; Cockerham, C. Clark (1984). "Estimating F-Statistics for the Analysis of Population Structure". Evolution. 38 (6): 1358.
 Evolution and the Genetics of Populations Volume 2: the Theory of Gene Frequencies, pg 294–295, S. Wright, Univ. of Chicago Press, Chicago, 1969.
-%% ~put references to the literature/web site here ~
+
 }
 \author{ qinxinghu@gmail.com
-%%  ~~who you are~~
+
 }
 \note{
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{
  Island<- "https://www.github.com/xinghuq/HierDpart/data/Island.gen"
@@ -214,7 +201,6 @@ function (x, d, ncode)
     }
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+\keyword{ COR_Fstd }
+\keyword{ Fst }

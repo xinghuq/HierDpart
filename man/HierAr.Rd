@@ -1,59 +1,48 @@
-\name{HierAr}
+﻿\name{HierAr}
 \alias{HierAr}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Function to calculate hierarchial allelic richness
-%%  ~~function to do ... ~~
 }
 \description{ This function calculate hierarchial allelic richness for populations structured in hierarchy.
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 HierAr(x, nreg, r, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{ The data file, genepop format
-%%     ~~Describe \code{x} here~~
 }
   \item{nreg}{ Number of aggregate in your hierarchical structure.
-%%     ~~Describe \code{nreg} here~~
 }
   \item{r}{ The number of subaggregate in your hierarchical structure.
-%%     ~~Describe \code{r} here~~
 }
   \item{ncode}{ Coding type of genetic data.
-%%     ~~Describe \code{ncode} here~~
+
 }
 }
 \details{ This function calculates the hierarchial allelic richness for metapopulations structured in any hierarchy. In this function, you can input your genepop file (x) and structure (nreg, r) of your data in the arguments, and then returns a matrix of your hierarchial Ar.
-%%  ~~ If necessary, more details than the description above ~~
+
 }
 \value{
 \item{Ar_pop}{Allelic richness for each population across loci}
 \item{Ar_reg}{Allelic richness for each aggregate ( for example, region)}
 \item{Ar_overall}{Hierarchical allelic richness in different levels}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
 }
 \references{
 El Mousadik A. and Petit R.J. (1996) High level of genetic differentiation for allelic richness among populations of the argan tree argania spinosa skeels endemic to Morocco. Theoretical and Applied Genetics, 92:832-839
 Goudet, J. (2005). Hierfstat, a package for R to compute and test hierarchical F‐statistics. Molecular Ecology Notes, 5(1), 184-186.
-%% ~put references to the literature/web site here ~
+
 }
 \author{qinxinghu@gmail.com
-%%  ~~who you are~~
+
 }
 \note{
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{ # we want to calculate the hierarchial allelic richness of 16 populations structured in a 4 regions. Each region contains 7,4,2,3 populations.
 HAr=HierAr=("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)
@@ -186,7 +175,6 @@ function (x, nreg, r, ncode)
     return(list(Ar_pop = hierarpop, Ar_reg = hierAr_R, Ar_ovell = hierAr))
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }

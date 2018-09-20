@@ -1,50 +1,35 @@
-\name{IDIP}
+﻿\name{IDIP}
 \alias{IDIP}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Function to decompose diversity (genetic or species diversity) into
-%%  ~~function to do ... ~~
 }
 \description{ This function is from Information-based Diversity Partitioning (Chao et al, 2017). This function allows you to do analyses of decomposing information-based diversity under a specified multi-level hierarchical structure.
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 IDIP(abun, struc)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{abun}{ The count or frequency data, raw or relative species/allele abundances.
-%%     ~~Describe \code{abun} here~~
 }
-  \item{struc}{ The hierarchial structure
-%%     ~~Describe \code{struc} here~~
+  \item{struc}{ The hierarchial structure.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{ Program iDIP can be applied to any arbitrary number of hierarchical levels. The output consists of a basic data summary and decomposition results, with the latter including (1) gamma (or total) diversity; alpha and beta diversity at each level; (2) proportion of total beta information (Shannon information) found at each level; (3) mean differentiation (dissimilarity) among aggregates at each level (Chao et al, 2017).
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{
 Chao, A., & Chiu, C. H. User’s Guide for Online program iDIP (Information-based Diversity Partitioning).
 Gaggiotti, O. E., Chao, A., Peres‐Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
-%% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+
 }
 \note{
-%%  ~~further notes~~
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{
 str=Str(nreg=4,r=c(7,4,2,3),n=16)
@@ -119,7 +104,6 @@ function (abun, struc)
     return(out)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+\keyword{ "IDIP" }
+

@@ -1,57 +1,52 @@
-\name{HierdetaD}
+﻿\name{HierdetaD}
 \alias{HierdetaD}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{ Function to calculate hierarchial genetic diversity and differentiation (deta D)
-%%  ~~function to do ... ~~
+
 }
 \description{ This function calculates and decomposes hierarchial genetic diversity and differentiation (deta D) (Oscar,E et al, 2018) into α, β, γ diversity and deta D2 and deta D1 (genetic differentiation).
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+
 }
 \usage{
 HierdetaD(x, nreg, r, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{ The genetype data, genepop format
-%%     ~~Describe \code{x} here~~
+
 }
   \item{nreg}{ Number of aggregate in your hierarchical structure.
-%%     ~~Describe \code{nreg} here~~
+
 }
   \item{r}{ The number of subaggregate in your hierarchical structure.
-%%     ~~Describe \code{r} here~~
+
 }
   \item{ncode}{ Coding type of genetic data.
-%%     ~~Describe \code{ncode} here~~
+
 }
 }
 \details{ This function calculates the hierarchial genetic differentiation (deta D) for metapopulations structured in any hierarchy. In this function, you can input your genepop file (x) and structure (nreg, r) of your data in the arguments, and then returns a list of your hierarchial genetic diversity and differentiation (deta D ). The result contains D_gamma, D_alpha.2, D_alpha.1, D_beta.2, D_beta.1, Differentiation.2, Differentiation.1, which corresponds to different hierarchial levels.
-%%  ~~ If necessary, more details than the description above ~~
+
 }
 \value{
 \item{Dst}{Result returns to a list of hierarchial diversities (q=1) and genetic differentiations, including D_gamma (total diversity), D_alpha.2 (average total diversity among aggregate (eg. region) within the whole ecosystem), D_alpha.1 (average diversity among populations), D_beta.2 (number of aggregate equivalent), D_beta.1 (number of population equivalent), Differentiation.2 (genetic differentiation between aggragates), Differentiation.1 (genetic differentiation between populations)}
 
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{
 Gaggiotti, O. E., Chao, A., Peres‐Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
-%% ~put references to the literature/web site here ~
+
 }
 \author{ qinxinghu@gmail.com
-%%  ~~who you are~~
+
 }
 \note{
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{
 HeirD=HierdetaD("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)
@@ -148,7 +143,6 @@ function (x, nreg, r, ncode)
     return(Dst)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }

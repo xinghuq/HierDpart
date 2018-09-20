@@ -1,54 +1,39 @@
-\name{COR_detaDd}
+﻿\name{COR_detaDd}
 \alias{COR_detaDd}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Function to calculate pairwise detaD and correlation between genetic differentiation (deta D) and geographic distance.
-%%  ~~function to do ... ~~
 }
 \description{ This function calculates new pairwise genetic differentication, deta D (Oscar E, et al, 2018), as well as the correlation between genetic differentiation (deta D) and geographic distance.
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 COR_detaDd(f, d, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{f}{ A genetic data files, here the format is genepop format.
-%%     ~~Describe \code{f} here~~
 }
   \item{d}{ Pairwise geographic distance for calculating correlations. If no actual geographic distance, d=FALSE. The geographic distance should be a matrix that corresponds to the pairwise genetic differentiation matrix.
-%%     ~~Describe \code{d} here~~
 }
   \item{ncode}{ The code type of the genotype
-%%     ~~Describe \code{ncode} here~~
 }
 }
 \details{ This function returns lists of pairwise detaD matrix, and a matrix of theorical geographical distance if d is FALSE, as well as their correlation coefficient.
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 \item {PairwiseDetaD} { The pairwise genetic differentiation-detaD matrix}
 \item {Dgeo} { The pairwise geographical distance matrix}
 \item {CordetaDd} {Person correlation coefficient of genetic differentiation (deta D) and geographic distance}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{ Gaggiotti, O. E., Chao, A., Peres‐Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
-%% ~put references to the literature/web site here ~
 }
 \author{ qinxinghu@gmail.com
-%%  ~~who you are~~
 }
 \note{
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{
  d1=COR_detaDd("Island.gen",d=FALSE,ncode=3)
@@ -158,7 +143,6 @@ function (f, d, ncode)
     }
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }

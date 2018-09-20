@@ -1,49 +1,31 @@
-\name{DetaDcorplot}
+﻿\name{DetaDcorplot}
 \alias{DetaDcorplot}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Plot correlation matrix of pairwise deta D.
-%%  ~~function to do ... ~~
 }
 \description{ This function plots the pairwise genetic differentiation (deta D).
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 DetaDcorplot(x, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{ The genetic data file, specifically genepop format
-%%     ~~Describe \code{x} here~~
+  \item{x}{ The genetic data file, specifically genepop format.
 }
-  \item{ncode}{ The coding type of the genetic data
-%%     ~~Describe \code{ncode} here~~
+  \item{ncode}{ The coding type of the genetic data.
 }
 }
 \details{ This function returns the pairwise genetic differentiation (deta D) plot.
-%%  ~~ If necessary, more details than the description above ~~
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\value{ The result will return a genetic differentiation (deta D) correlation plot.
+
 }
 \references{
 Gaggiotti, O. E., Chao, A., Peres‐Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
-%% ~put references to the literature/web site here ~
 }
 \author{qinxinghu@gmail.com
-%%  ~~who you are~~
 }
 \note{
-%%  ~~further notes~~
 }
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 DetaDcorplot("Island.gen",ncode=3)
@@ -132,7 +114,5 @@ function (x, ncode)
     return(p)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }

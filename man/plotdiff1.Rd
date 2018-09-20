@@ -1,49 +1,33 @@
-\name{plotdiff1}
+﻿\name{plotdiff1}
 \alias{plotdiff1}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{ PLot genetic differentiation (deta D) across loci
-%%  ~~function to do ... ~~
 }
 \description{ Plot genetic differentiation across (deta D, Oscar E, et al, 2018) loci.
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
 plotdiff1(x, ncode)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{ The genetic data, should be genepop format
-%%     ~~Describe \code{x} here~~
 }
-  \item{ncode}{ The coding type of your genetic data.
-%%     ~~Describe \code{ncode} here~~
+\item{ncode}{ The coding type of your genetic data.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{
  Gaggiotti, O. E., Chao, A., Peres‐Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
-%% ~put references to the literature/web site here ~
 }
 \author{qinxinghu@gmail.com
-%%  ~~who you are~~
 }
 \note{
-%%  ~~further notes~~
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{
 ##plot genetic differentiation across loci
@@ -148,7 +132,6 @@ function (x, ncode)
     return(list(p1 = p1, p2 = p2))
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ plotdiff1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ DetaDcorplot }% __ONLY ONE__ keyword per line
+
+\keyword{ "plotdiff1" }
+\keyword{ "DetaDcorplot" }
