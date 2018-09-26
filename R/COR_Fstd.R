@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 ###### updated on 21-09-2018, the function for correlation of pirwise Fst and distance
+=======
+###### updated on 09-08-2018, the function for correlation of pirwise Fst and distance
+>>>>>>> b0c8cb24be41d276ddfae5df6d537a8eb64f7ed6
 
 COR_Fstd = function (x, d, ncode) {
   read.genepop1 <- function(file, ncode, quiet = FALSE) {
