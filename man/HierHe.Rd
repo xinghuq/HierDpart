@@ -22,9 +22,12 @@ Jombart, T. (2008). adegenet: a R package for the multivariate analysis of genet
 Nei, M. (1977). F-statistics and analysis of gene diversity in subdivided populations. Annals of human genetics, 41(2), 225-233.
 }
 \author{qinxinghu@gmail.com}
-\note{}
-\seealso{HierAr,HierdetaD,HierFst}
+\seealso{HierAr,HierD,HierFst}
 \examples{
-HeirHe=HierdetaD("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)}
-\keyword{ "HierHe" }
+ download.file("https://sites.google.com/site/advancesinevolutionandgenetics
+/Home/unit-3-1/Island.gen?attredirects=0&d=1",
+"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
+HiHe=HierHe("C:/Users/Public/Documents/Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)
+print(HiHe)}
+\keyword{Hierarchical genetic decomposition}
 

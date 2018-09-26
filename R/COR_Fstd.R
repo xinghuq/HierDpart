@@ -1,9 +1,17 @@
 
-###### updated on 09-08-2018, the function for correlation of pirwise Fst and distance
+###### updated on 21-09-2018, the function for correlation of pirwise Fst and distance
 
 COR_Fstd = function (x, d, ncode) {
-  read.genepop <- function(file, ncode, quiet = FALSE) {
-    require(adegenet)
+  read.genepop1 <- function(file, ncode, quiet = FALSE) {
+    adegenet::.readExt
+    adegenet::.genlab
+    adegenet::df2genind
+    adegenet::is.genind
+     adegenet::pop
+     adegenet::repool
+    adegenet::Hs
+    adegenet::seppop
+    adegenet::popNames
     if (toupper(.readExt(file)) != "GEN")
       stop("File extension .gen expected")
     if (!quiet)
@@ -60,57 +68,9 @@ COR_Fstd = function (x, d, ncode) {
       cat("\n...done.\n\n")
     return(res)
   }
-    g = read.genepop(x, ncode, quiet = FALSE)
+  g = read.genepop1(x, ncode, quiet = FALSE)
      # genind file
-    pairwise.fst <- function(x, pop=NULL, res.type=c("dist","matrix")){
-      if(!is.genind(x)) stop("x is not a valid genind object")
-      if(!is.null(pop)){
-        pop(x) <- pop
-      }
-      temp <- pop(x)
-      if(is.null(temp)) stop("no grouping factor (pop) provided")
-      if(length(levels(temp)) < 2){
-        warning("There is only one pop - returning NULL")
-        return(NULL)
-      }
-
-      res.type <- match.arg(res.type)
-
-      f1 <- function(pop1, pop2){
-        n1 <- nrow(pop1@tab)
-        n2 <- nrow(pop2@tab)
-        temp <- repool(pop1,pop2)
-        b <- weighted.mean(Hs(temp), c(n1,n2))
-        pop(temp) <- NULL
-        a <- Hs(temp)
-        return((a-b)/a)
-      }
-
-      lx <- seppop(x,treatOther=FALSE)
-      temp <- pop(x)
-      levPop <- levels(temp)
-      allPairs <- combn(1:length(levPop), 2)
-      if(!is.matrix(allPairs)){
-        allPairs <- matrix(allPairs,nrow=2)
-      }
-      vecRes <- numeric()
-      for(i in 1:ncol(allPairs)){
-        vecRes[i] <- f1(lx[[allPairs[1,i]]], lx[[allPairs[2,i]]])
-      }
-
-      squelres <- dist(1:length(levPop))
-      res <- vecRes
-      attributes(res) <- attributes(squelres)
-
-      if(res.type=="matrix"){
-        res <- as.matrix(res)
-        lab <- popNames(x)
-
-        colnames(res) <- rownames(res) <- lab
-      }
-
-      return(res)
-    }
+  hierfstat::pairwise.fst
   PFst = pairwise.fst(g)
     npops = length(levels(g$pop))
     ## if M is matrix, then

@@ -1,8 +1,16 @@
 ##### Here are scprits for getting hierchical heterozygosity ###################
 
 HierHe = function(x, nreg, r, ncode) {
-    read.genepop <- function(file, ncode, quiet = FALSE) {
-      require(adegenet)
+    read.genepop1 <- function(file, ncode, quiet = FALSE) {
+      adegenet::.readExt
+      adegenet::.genlab
+      adegenet::df2genind
+      adegenet::is.genind
+      adegenet::pop
+      adegenet::repool
+      adegenet::Hs
+      adegenet::seppop
+      adegenet::popNames
         if (toupper(.readExt(file)) != "GEN")
             stop("File extension .gen expected")
         if (!quiet)
@@ -60,12 +68,12 @@ HierHe = function(x, nreg, r, ncode) {
         return(res)
     }
 
-    genfiles = read.genepop(x, ncode, quiet = TRUE)  # covert the genepop #files to genind files, we can also use read.genpop from adegent package
-    require(hierfstat)
+    genfiles = read.genepop1(x, ncode, quiet = TRUE)  # covert the genepop #files to genind files, we can also use read.genpop from adegent package
+    hierfstat::genind2hierfstat
     hfiles <- genind2hierfstat(genfiles)  # convert into hieformat
 
     ## Here we add our hierchical information (regions-pops) to the data
-    require(dplyr)
+    requireNamespace("dplyr")
     npops = length(levels(genfiles$pop))
     nloci = length(levels(genfiles$loc.fac))
     sampsize = summary(genfiles$pop)  ## sample size

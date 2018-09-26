@@ -1,8 +1,16 @@
 #### Modified HierFst
 
 HierFst = function(x, nreg, r, ncode) {
-    read.genepop <- function(file, ncode, quiet = FALSE) {
-      require(adegenet)
+    read.genepop1 <- function(file, ncode, quiet = FALSE) {
+      adegenet::.readExt
+      adegenet::.genlab
+      adegenet::df2genind
+      adegenet::is.genind
+      adegenet::pop
+      adegenet::repool
+      adegenet::Hs
+      adegenet::seppop
+      adegenet::popNames
         if (toupper(.readExt(file)) != "GEN")
             stop("File extension .gen expected")
         if (!quiet)
@@ -60,10 +68,10 @@ HierFst = function(x, nreg, r, ncode) {
         return(res)
     }
 
-    genfiles = read.genepop(x, ncode, quiet = TRUE)  # covert the genepop #files to genind files, we can also use read.genpop from adegent package
-    require(hierfstat)
+    genfiles = read.genepop1(x, ncode, quiet = TRUE)  # covert the genepop #files to genind files, we can also use read.genpop from adegent package
+    hierfstat::genind2hierfstat
     hfiles <- genind2hierfstat(genfiles)  # convert into hieformat
-    require(dplyr)
+    requireNamespace("dplyr")
     npops = length(levels(genfiles$pop))
    # nloci = length(levels(genfiles$loc.fac))
     sampsize = summary(genfiles$pop)  ## sample size
@@ -80,7 +88,7 @@ HierFst = function(x, nreg, r, ncode) {
         rsample[[i]] = sum(sampsize[(sum(head(r, i - 1)) + 1):(sum(head(r, i)))])
     }
     region = as.numeric(unlist(popr))
-    require(tibble)
+    tibble::add_column
     hfiles1 = add_column(hfiles, region, .before = 1)
     hfiles1[, 2] = as.numeric(hfiles1[, 2])
     HieFst = varcomp.glob(data.frame(hfiles1[, 1:2]), hfiles1[, -c(1, 2)])$F

@@ -2,8 +2,17 @@
 
 # we will pool the regional pops, and whole pops(ecosystem) as one pop.
 HierAr = function(x, nreg, r, ncode) {
-    read.genepop <- function(file, ncode, quiet = FALSE) {
-      require(adegenet)
+    read.genepop1 <- function(file, ncode, quiet = FALSE) {
+      #require(adegenet)
+      adegenet::.readExt
+      adegenet::.genlab
+      adegenet::df2genind
+      adegenet::is.genind
+      adegenet::pop
+      adegenet::repool
+      adegenet::Hs
+      adegenet::seppop
+      adegenet::popNames
         if (toupper(.readExt(file)) != "GEN")
             stop("File extension .gen expected")
         if (!quiet)
@@ -61,12 +70,12 @@ HierAr = function(x, nreg, r, ncode) {
         return(res)
     }
 
-    genfiles = read.genepop(x, ncode, quiet = TRUE)  # covert the genepop #files to genind files, we can also use read.genpop from adegent package
-    require(hierfstat)
+    genfiles = read.genepop1(x, ncode, quiet = TRUE)  # covert the genepop #files to genind files, we can also use read.genpop from adegent package
+    hierfstat::genind2hierfstat
     hfiles <- genind2hierfstat(genfiles)  # convert into hieformat
     sampsize = summary(genfiles$pop)
     ## Here we add our hierchical information (regions-pops) to the data
-    require(dplyr)
+    requireNamespace("dplyr")
     npops = length(levels(genfiles$pop))
     # sampsize=length(genfiles@pop)/length(levels(genfiles$pop)) ## sample size for identical pop size
     if (length(r) != nreg)
@@ -99,7 +108,7 @@ HierAr = function(x, nreg, r, ncode) {
     ## we enter a loop to pool pops ##
     arecosystem = hfiles
     arecosystem$pop = factor(popeco)
-
+    hierfstat::allelic.richness
     for (i in seq_along(r)) {
         arregion[[i]] = region[[i]]
         arregion[[i]]$pop = factor(popr[[i]])  ### This way is to drop the levels from 16 pops to the current levels, like nowlevelr1=c('pop1','pop2','pop3','pop4')

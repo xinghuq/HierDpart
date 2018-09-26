@@ -1,7 +1,7 @@
 #### Pairwise detaD across loci
 
 plotdiff1 = function(x, ncode) {
-    require(diveRsity)
+    diveRsity::readGenepop
     gp = ncode
     fr = readGenepop(x, gp, bootstrap = FALSE)
     af = fr$allele_freq
@@ -75,12 +75,12 @@ plotdiff1 = function(x, ncode) {
     pwdetaD <- do.call(cbind, lapply(pwdetaD, as.vector))
     pwdetaD = unique(pwdetaD)
     Loci = c(1:fr$nloci)
-    require(reshape2)
+    reshape2::melt
     pwd <- melt(pwdetaD)
     colnames(pwd) = c("pwpop", "Loci", "detaD")
     ylab = c("Pairwise Genetic Differentiation Across Loci (deta_D)")
-    require(ggplot2)
-    p1 <- ggplot(pwd, aes(x = Loci, y = detaD, colour = factor(Loci))) + ylab(ylab) + ylim(-0.25, 1) + geom_jitter(size = 4,
+    requireNamespace("ggplot2")
+    p1 <- ggplot(pwd, aes(x = Loci, y = pwd$detaD, colour = factor(Loci))) + ylab(ylab) + ylim(-0.25, 1) + geom_jitter(size = 4,
         alpha = 0.8) + scale_x_continuous("Loci", labels = as.character(pwd$Loci), breaks = pwd$Loci) + geom_hline(yintercept = mean(pwd$detaD),
         linetype = "dashed", color = "red", size = 1) + geom_smooth(method = loess, se = FALSE, fullrange = TRUE)
     p2 = boxplot(pwd$detaD ~ pwd$Loci, xlab = "Loci", ylab = "Diff1", main = "Pairwise Genetic Differentiation Across Loci (deta_D)")

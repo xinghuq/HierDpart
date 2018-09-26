@@ -2,9 +2,9 @@
 
 ## hierarchical diversity over loci
 
-HierdetaD = function(x, nreg, r, ncode) {
+HierD = function(x, nreg, r, ncode) {
     # r is level, pops per region
-    require(diveRsity)
+    diveRsity::readGenepop
     gp = ncode
     file = readGenepop(x, gp, bootstrap = FALSE)
     outfile = file$allele_freq

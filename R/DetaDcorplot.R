@@ -1,7 +1,7 @@
 ##### Plot corplot for pairwise differentiation.1 (deta_D.1)
 
 DetaDcorplot = function(x, ncode) {
-    require(diveRsity)
+    diveRsity::readGenepop
     gp = ncode
     fr = readGenepop(x, gp, bootstrap = FALSE)
     af = fr$allele_freq
@@ -72,7 +72,7 @@ DetaDcorplot = function(x, ncode) {
     pairwiseDav = Reduce("+", Dmat)/length(Dmat)
     colnames(pairwiseDav) = fr$pop_names
     rownames(pairwiseDav) = fr$pop_names
-    require(GGally)
+    GGally::ggcorr
     p = ggcorr(pairwiseDav, label = TRUE)
     return(p)
 }

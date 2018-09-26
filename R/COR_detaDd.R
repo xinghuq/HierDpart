@@ -3,7 +3,7 @@
 
 
 COR_detaDd = function(f, d, ncode) {
-    require(diveRsity)
+    diveRsity::readGenepop
     gp = ncode
     fr = readGenepop(f, gp, bootstrap = FALSE)
     af = fr$allele_freq

@@ -1,20 +1,17 @@
 Package: HierDpart
-Version: 0.5-1
-Date: 2018-08-31
-Title: R package for calculating and decomposing hierarchical diversity across metrics and scales, from genes to ecosystem
-Description: Miscellaneous R functions for calculating multiple hierachical diversity metrics (especially for number of equivalent components),
-    including hierarchical allleic richness, hierarchical heterozygosity, hierarchial D (q=1) and thier differentiation.
-    This package can allow you to analyse spatial structured genetic data under a unifying framework (Oscar E, et al, 2018), 
-    which partitions genetic diversity and differentiation into any hierarchial levels. 
-    It calculates and plots the diversity profiles (q=0,1,2). 
-    It can helps you easily set your structure and generate your structure dataframe. 
-    It can also calculates and plots the the correlation between geographic distance and genetic differentiation.
-Author: Xinghu Qin<qinxinghu@gmail.com>
-Maintainer: Xinghu Qin<qinxinghu@gmail.com>
+Version: 0.1.2
+Date: 2018-09-21
+Title: Partitioning Hierarchical Diversity and Differentiation Across Metrics and Scales, from Genes to Ecosystem
+Description: Miscellaneous R functions for calculating and decomposing multiple hierarchical diversity metrics, including hierarchical allelic richness (q=1), hierarchical exponential Shannon entropy (q=1), hierarchical heterozygosity (q=2) and their differentiation. This package allows you to analyse spatial structured genetic data or species data under a unifying framework (Oscar E, et al, 2018), which partitions diversity and differentiation into any hierarchical levels. It helps you easily set the structure and generates structured dataframe. It produces diversity profiles (q=0,1,2), hierarchical diversity and differentiation, as well as the the correlation between geographic distance and genetic differentiation.
+Author: Xinghu Qin
+Maintainer: Xinghu Qin <qinxinghu@gmail.com>
 Depends: R (>= 3.0)
-License: GPL (>= 2)
+License: GPL (>= 3)
 SystemRequirements: GNU make
 URL: https://github.com/xinghuq/HierDpart
 BugReports: https://github.com/xinghuq/HierDpart/issues
+Imports:GGally, adegenet, diveRsity, dplyr, entropart, ggplot2, hierfstat, reshape2, tibble
 VignetteBuilder: knitr
 NeedsCompilation: no
+RoxygenNote: 6.1.0
+Suggests: knitr,testthat

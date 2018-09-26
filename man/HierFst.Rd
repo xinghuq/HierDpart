@@ -1,6 +1,6 @@
 \name{HierFst}
 \alias{HierFst}
-\title{Function to calculate hierarchical genetic differentiation (Fst) (Weir B.S., 1996; Yang R.C.,1998.}
+\title{Function to calculate hierarchical genetic differentiation (Fst) (Weir B.S., 1996; Yang R.C.,1998).}
 \description{This function calculates hierarchical genetic differentiation (Fst) based on Weir B.S., 1996 and Yang R.C., 1998). The hierarchy that set in the input arguments (nreg, r) will automatically generate your hierarchical structure. Based on the parameters you set, the result returns to a F-statistics matrix displaying one level (rows) of Fst within a higher level hierarchy (columns).}
 \usage{HierFst(x, nreg, r, ncode)}
 \arguments{
@@ -9,7 +9,7 @@
   \item{r}{A vector specifying number of subaggregate (eg.subpopulations) within each aggregate.}
   \item{ncode}{An integer indicating the number of characters used to code an allele.}
 }
-\details{This function was modified and improved from the varcomp.glob function from the hierfstat package (Jerome Goudet & Thibaut Jombart 2015). It was optimized to easily set the hierarchial structure while varcom.glob requires the structure data should be already correctly formated in accordance with hierfstat data. In this function, you can input your genetic file (x) and set the structure (nreg, r) of your data in the arguments, and then it returns a matrix of hierarchial Fst.}
+\details{This function was modified and improved from the varcomp.glob function from the hierfstat package (Jerome Goudet & Thibaut Jombart 2015). It was optimized to easily set the hierarchical structure while varcom.glob requires the structure data should be already correctly formated in accordance with hierfstat data. In this function, you can input your genetic file (x) and set the structure (nreg, r) of your data in the arguments, and then it returns a matrix of hierarchical Fst.}
 \value{The result returns a matrix of hierarchical F-statistics type-coefficients at different levels.}
 \references{
 Weir, B.S. (1996) Genetic Data Analysis II. Sinauer Associates.
@@ -21,8 +21,11 @@ Molecular Ecology Notes. 5:184-186}
 \author{ qinxinghu@gmail.com}
 \note{Note that you should arrange your population in the order corresponding to your structure set in nreg.}
 \seealso{HierAr}
-\examples{#load data
- data(Island.gen)
- hFst=HierFst("Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)
+\examples{
+#load data
+ download.file("https://sites.google.com/site/advancesinevolutionandgenetics
+/Home/unit-3-1/Island.gen?attredirects=0&d=1",
+"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
+ hFst=HierFst("C:/Users/Public/Documents/Island.gen", nreg=4, r=c(7,4,2,3), ncode=3)
  print(hFst)}
-\keyword{HierFst}
+\keyword{Hierarchical genetic decomposition}
