@@ -26,9 +26,10 @@ Goudet, J. (2005). Hierfstat, a package for R to compute and test hierarchical F
 #we want to calculate the hierarchical allelic richness of
 #16 populations structured in a 4 regions.
 #Each region contains 7,4,2,3 populations.
-download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
-HAr=HierAr("C:/Users/Public/Documents/Island.gen", nreg=4, r=c(7,4,2,3), ncode=3)
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+HAr=HierAr(infile, nreg=4, r=c(7,4,2,3), ncode=3)
+HAr
 }
 \keyword{Hierarchical genetic decomposition}

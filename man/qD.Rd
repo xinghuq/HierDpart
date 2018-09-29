@@ -17,11 +17,10 @@ Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M.
 }
 \author{qinxinghu@gmail.com}
 \examples{
-##plot allelic richness
-download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
-qD("C:/Users/Public/Documents/Island.gen",q=0,ncode=3)
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+qD(infile,q=0,ncode=3)
 }
 \keyword{Diversity profiles}
 

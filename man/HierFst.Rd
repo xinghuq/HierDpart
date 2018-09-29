@@ -16,16 +16,15 @@ Weir, B.S. (1996) Genetic Data Analysis II. Sinauer Associates.
 
 Yang, R.C. (1998). Estimating hierarchical F-statistics. Evolution 52 (4):950-956
 
-Goudet J. (2005). Hierfstat, a package for R to compute and test variance components and Fstatistics.
+Goudet J. (2005). Hierfstat, a package for R to compute and test variance components and Fs-tatistics.
 Molecular Ecology Notes. 5:184-186}
 \author{ qinxinghu@gmail.com}
 \note{Note that you should arrange your population in the order corresponding to your structure set in nreg.}
 \seealso{HierAr}
-\examples{
-#load data
- download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
- hFst=HierFst("C:/Users/Public/Documents/Island.gen", nreg=4, r=c(7,4,2,3), ncode=3)
+\examples{#
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+ hFst=HierFst(infile, nreg=4, r=c(7,4,2,3), ncode=3)
  print(hFst)}
 \keyword{Hierarchical genetic decomposition}

@@ -18,8 +18,8 @@ Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M.
 \author{ qinxinghu@gmail.com}
 \seealso{HierAr; HierFst; HierHe}
 \examples{
- download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
-HeirD=HierD("C:/Users/Public/Documents/Island.gen",nreg=4,r=c(7,4,2,3),ncode=3)}
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+HeirD=HierD(infile,nreg=4,r=c(7,4,2,3),ncode=3)}
 \keyword{Hierarchical genetic decomposition}

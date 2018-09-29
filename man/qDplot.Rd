@@ -15,13 +15,13 @@ Marcon, E., & Herault, B. (2015). entropart: An R package to measure and partiti
 Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.}
 \author{qinxinghu@gmail.com}
 \seealso{qD}
-\examples{#download file
-download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
+\examples{
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
 # plot allelic richness
-qDplot("C:/Users/Public/Documents/Island.gen",q=0,ncode=3)
+qDplot(infile,q=0,ncode=3)
 #plot all three diversity profiles
-qDplot("C:/Users/Public/Documents/Island.gen",q="all",ncode=3)}
+qDplot(infile,q="all",ncode=3)}
 \keyword{Plot}
 \keyword{Diversity profiles}

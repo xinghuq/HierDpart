@@ -24,11 +24,11 @@ Evolution and the Genetics of Populations Volume 2: the Theory of Gene Frequenci
 \author{ qinxinghu@gmail.com}
 \seealso{COR_detaDd}
 \examples{
-download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
-d2=COR_Fstd("C:/Users/Public/Documents/Island.gen",d=FALSE,ncode=3)
- print(d2)
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+d2=COR_Fstd(infile,d=FALSE,ncode=3)
+print(d2)
 }
 \keyword{Correlation between genetic differentiation and geographic distance}
 

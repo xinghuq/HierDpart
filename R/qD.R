@@ -9,12 +9,11 @@ qD = function(x, q, ncode) {
     npops = file$npops
     nloci = file$nloci
     D = as.data.frame(matrix(data = 0, ncol = npops, nrow = nloci))
-    requireNamespace("entropart")
+    #requireNamespace("entropart")
     entropart::Diversity
-    CheckArguments=FALSE
     for (i in 1:nloci) {
         for (j in 1:npops) {
-            D[i, j] = Diversity(outfile[[i]][, j], q)  # n is the number of files, and i is loci, j is pops
+            D[i, j] = Diversity(outfile[[i]][, j], q, CheckArguments=FALSE)  # n is the number of files, and i is loci, j is pops
         }
     }
     rownames(D) = file$loci_names

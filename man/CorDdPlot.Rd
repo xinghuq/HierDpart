@@ -16,9 +16,10 @@
 Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.}
 \author{qinxinghu@gmail.com}
 \examples{
- download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
-CorDdPlot("C:/Users/Public/Documents/Island.gen",d=FALSE,ncode=3)}
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+CorDdPlot(infile,d=FALSE,ncode=3)
+}
 \keyword{Correlation plot}
 \keyword{Plot genetic differentiation}

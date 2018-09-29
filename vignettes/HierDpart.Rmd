@@ -1,0 +1,120 @@
+---
+title: "A Brief Guide to Use HierDpart Package to Do Landscape Genetic Analysis "
+author: "Xinghu Qin  --School of Biology, University of St Andrews"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Instruction to pPackage HierDpart }
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+# Instruction
+
+This vignette demonstrates how to use the latest version of HierDPart to do landscape genetic analysis. This package is designed for population geneticists and community geneticists to solve the gap between community ecology and population genetics - how to partition diversity across metrics and spatial scales, from genetic diversity to species diversity using an integrated method. The method, known as the unifying framework, has been explained in recent paper (Oscar, E. et al, 2018). This package was developed to implement the hierarchical decomposition analysis using not only the common genetic metrics, such as He, Fst, allelic richness, but also new genetic metrics from the unifying framework.  
+
+Here, this vignette will briefly show how to do analyses using this package.
+
+# Practical analyses
+
+ HierDpart can read genepop files both in haploid and diploid which are quite common in genetics.
+ 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+##Install HierDpart
+
+```{r, install}
+#Install from CRAN
+#install.packages("HierDpart")
+## or you can install from github
+#library(devtools)
+
+#install_github("xinghuq/HierDpart")
+
+library("HierDpart")
+
+```
+```{r, library}
+# example genepop file
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' 
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+```
+
+##Function to calculate genetic diversity profiles (q=0,1,2)
+qD is the function calculating genetic diversity profiles (q=0,1,2), including richness (q=0), exponential Shannon entropy (q=1), and heterozygosity (q=2). If we want to calculate the allelic diversity profiles, we can do the following command line:
+
+```{r}
+qD(infile,q=0,ncode=3)
+```
+You can choose which diversity to calculate by defining the value of q.
+
+##Plot diversity profiles
+If we want to plot the diversity profiles, we can do:
+
+```{r}
+qDplot(infile,q="all",ncode=3)
+```
+
+##Hierarchical diversity and differentication decomposition
+For geneticists studying landscape genetics, they may want to partition the metapopulation into different subpopulation, thus having several hierarchical groups. Now we are showing how to decompose genetic diversity into different hierarchical levels.
+
+## Hierarchical allelic richness (q=0)
+
+Here it is easy to define or delimit your structure, type ?HierAr will show you how to do that. Here, "nreg" is the number of aggregate ( or population) in your metapopulation, and "r" is the number of subaggregate (or subpopulation) in each aggregate.
+
+```{r}
+HAr=HierAr(infile, nreg=4, r=c(7,4,2,3), ncode=3)
+print(HAr)
+```
+
+## Hierarchical allelic diversity (q=1)
+
+```{r}
+HiD=HierD(infile, nreg=4, r=c(7,4,2,3), ncode=3)
+print(HiD)
+```
+
+The result returns a list of hierarchical metrics, the first five metrics are diversities. It explains in the below section.
+
+## Hierarchical heterozygosity (q=2)
+
+```{r}
+He=HierHe(infile, nreg=4, r=c(7,4,2,3), ncode=3)
+print(He)
+```
+
+## Hierarchical Fst
+
+Besides the hierarchical diversity, this package also calculates hierarchical differentiation. It has new differentiation (deta D) here, which corresponds to diversity D (q=1). Now we are showing how to calculate the traditional hierarchical Fst and new hierarchical deta D. 
+
+For Fst:
+
+```{r}
+Hier_Fst=HierFst(infile, nreg=4, r=c(7,4,2,3), ncode=3)
+print(Hier_Fst)
+```
+
+This gives you the Fst within in higher levels among lower levels. See ?HierFst for details.
+## Hierarchical Fst
+For detaD:
+
+```{r}
+Hier_D=HierD(infile, nreg=4, r=c(7,4,2,3), ncode=3)
+print(Hier_D)
+```
+
+Here we get alpha, beta, gamma diversity, which correspond to low to high level diversities. Beta.1 is the number of equivalent subaggregate (population or subpopulation depends on the hierarchy), and beta.2 is the number of equivalent aggregate (eg. regions). Differentiation.2 represents genetic differentiation between aggragates, Differentiation.1 represents genetic differentiation between subaggregates. 
+
+Untill now you may know how to implement the hierarchical diversity analyses. Furthermore, this package also includes several functions that can plot correlation between geographic distances and genetic differentiations, (see COR_Fstd, and COR_detaDd), as well as deta D matrix and deta D across loci.
+
+# References
+> 'Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M. J., ... & Selkoe, K. A. (2018). Diversity from genes to ecosystems: A unifying framework to study variation across biological metrics and scales. Evolutionary Applications.
+
+>'Weir, B.S. (1996) Genetic Data Analysis II. Sinauer Associates.
+
+>'Yang, R.C. (1998). Estimating hierarchical F-statistics. Evolution 52 (4):950-956

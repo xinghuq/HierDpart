@@ -14,10 +14,10 @@ Gaggiotti, O. E., Chao, A., Peres-Neto, P., Chiu, C. H., Edwards, C., Fortin, M.
 \author{qinxinghu@gmail.com}
 \seealso{HierD; CorDdplot}
 \examples{
-download.file("https://sites.google.com/site/advancesinevolutionandgenetics
-/Home/unit-3-1/Island.gen?attredirects=0&d=1",
-"C:/Users/Public/Documents/Island.gen",cacheOK=FALSE)
-DetaDcorplot("C:/Users/Public/Documents/Island.gen",ncode=3)
+infile <- system.file('extdata', 'Island.gen',package='HierDpart')
+locinfile <- 'Island.gen' ## file in user's directory not in R's extdata directory
+check <- file.copy(infile,locinfile,overwrite=TRUE)
+DetaDcorplot(infile,ncode=3)
 }
 \keyword{Correlation plot}
 \keyword{Plot genetic differentiation}
